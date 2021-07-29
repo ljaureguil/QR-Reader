@@ -1,5 +1,5 @@
 <html>
-	<head>
+	<head id="h1">
     <meta name="viewport" content="width=device-width">
 </head>
 	
@@ -56,6 +56,7 @@ html5QrcodeScanner.render(onScanSuccess, onScanError);
 function onScanSuccess(decodedText, decodedResult) { 
      if(decodedText.indexOf("http")>-1) ta.style.display="block";
       else  ta.style.display="none";
+      h1.innerHTML=' <meta name="viewport" content="width=device-width">'
      alert(decodedText);
    ta.href=decodedText;
    ta.innerHTML=decodedText;
