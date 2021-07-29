@@ -1,9 +1,20 @@
 <html>
+	<head>
+    <meta name="viewport" content="width=device-width">
+</head>
+	
 <style>
+	body{
+		font-size:20px;
+	}
+#reader{
 
+	width:100%;
+
+	}
 
 </style>
-<div style="width: 500px" id="reader"></div>
+<div style="width: 500px" id="reader"></div><br><br>
 <div id="res">
     <textarea id="tx"></textarea>
 </div>
@@ -13,9 +24,9 @@
 <script>
 function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
-    alert(`Scan result: ${decodedText}`, decodedResult);
+    alert(decodedResult);
     tx.value=`Scan result: ${decodedText}`, decodedResult
-
+//`Scan result: ${decodedText}`, 
 }
 
 var html5QrcodeScanner = new Html5QrcodeScanner(
