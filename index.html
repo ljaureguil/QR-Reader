@@ -4,6 +4,9 @@
 
 </style>
 <div style="width: 500px" id="reader"></div>
+<div id="res">
+    <textarea id="tx"></textarea>
+</div>
 <script src="html5-qrcode.min.js"></script>
 
 
@@ -11,6 +14,8 @@
 function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
     alert(`Scan result: ${decodedText}`, decodedResult);
+    tx.value=`Scan result: ${decodedText}`, decodedResult
+
 }
 
 var html5QrcodeScanner = new Html5QrcodeScanner(
@@ -20,6 +25,7 @@ html5QrcodeScanner.render(onScanSuccess);
 function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
     alert(`Scan result: ${decodedText}`, decodedResult);
+    tx.value=`Scan result: ${decodedText}`, decodedResult
 }
 
 function onScanError(errorMessage) {
