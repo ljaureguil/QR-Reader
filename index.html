@@ -5,7 +5,7 @@
 	
 <style>
 	body{
-		font-size:20px;
+		font-size:25px;
 	}
 #reader{
 
@@ -36,7 +36,7 @@ html5QrcodeScanner.render(onScanSuccess);
 function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
     alert(`Scan result: ${decodedText}`, decodedResult);
-    tx.value=`Scan result: ${decodedText}`, decodedResult
+    tx.value=decodedResult
 }
 
 function onScanError(errorMessage) {
