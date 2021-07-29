@@ -3,11 +3,18 @@
     <meta name="viewport" content="width=device-width">
 </head>
 	
-<style>
-	body{
-		font-size:25px;
-		color:white;
-	}
+<style id="s1">
+body{
+    text-align:center;
+    font-size:35px;
+    margin:20px;
+    
+    
+    }
+    code#{
+        margin: 5%;
+        width: 100%;
+    }
 	button{
 		font-size:35px;
         border-radius: 10px;
@@ -54,6 +61,7 @@ var html5QrcodeScanner = new Html5QrcodeScanner(
 html5QrcodeScanner.render(onScanSuccess, onScanError);
 
 function onScanSuccess(decodedText, decodedResult) { 
+	vat s=s1.innerHTML;
      if(decodedText.indexOf("http")>-1) ta.style.display="block";
       else  ta.style.display="none";
       h1.innerHTML=' <meta name="viewport" content="width=device-width">'
@@ -63,6 +71,7 @@ function onScanSuccess(decodedText, decodedResult) {
  
   
    tx.value=decodedText;
+	s1.innerHTML=s;
 }
 function onScanError(errorMessage) {
     // handle on error condition, with error message
@@ -73,20 +82,6 @@ function onScanError(errorMessage) {
 
 </script>
 
-
-
-<style>
-body{
-    text-align:center;
-    font-size:35px;
-    margin:20px;
-    
-    
-    }
-    code#{
-        margin: 5%;
-        width: 100%;
-    }
 
 </style>
 <div id="todo">
