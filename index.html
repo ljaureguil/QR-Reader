@@ -12,11 +12,13 @@
 	width:100%;
 
 	}
+  
 
 </style>
 <div style="width: 500px" id="reader"></div><br><br>
+Resultado:<br><br>
 <div id="res">
-    <textarea id="tx"></textarea>
+    <a id="tx" href=""  target="_blank" ></textarea>
 </div>
 <script src="html5-qrcode.min.js"></script>
 
@@ -36,7 +38,9 @@ html5QrcodeScanner.render(onScanSuccess);
 function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
     alert(`Scan result: ${decodedText}`, decodedResult);
-    tx.value=decodedResult
+  //  tx.value=decodedText+"\n\n\n"+JSON.stringify(decodedResult);
+  tx.href=decodedText;tx.innerHTML=decodedText;
+
 }
 
 function onScanError(errorMessage) {
