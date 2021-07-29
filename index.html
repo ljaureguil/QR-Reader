@@ -7,6 +7,10 @@
 	body{
 		font-size:25px;
 	}
+	button{
+		font-size:25px;
+		background:blue;
+	}
 #reader{
 
 	width:100%;
@@ -27,7 +31,7 @@ Resultado:<br><br>
 function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
     alert(decodedResult);
-    tx.value=`Scan result: ${decodedText}`, decodedResult
+   tx.href=decodedText;tx.innerHTML=decodedText;
 //`Scan result: ${decodedText}`, 
 }
 
