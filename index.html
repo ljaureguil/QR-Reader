@@ -28,13 +28,19 @@ Resultado:<br><br>
 
 
 <script>
+	
+	
+var html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader", { fps: 10, qrbox: 250 });
+html5QrcodeScanner.render(onScanSuccess, onScanError);
+
 function onScanSuccess(decodedText, decodedResult) {
     // Handle on success condition with the decoded text or result.
     alert(decodedResult);
    tx.href=decodedText;tx.innerHTML=decodedText;
 //`Scan result: ${decodedText}`, 
 }
-
+/*
 var html5QrcodeScanner = new Html5QrcodeScanner(
 	"reader", { fps: 10, qrbox: 250 });
 html5QrcodeScanner.render(onScanSuccess);
@@ -46,14 +52,10 @@ function onScanSuccess(decodedText, decodedResult) {
   tx.href=decodedText;tx.innerHTML=decodedText;
 
 }
-
+*/
 function onScanError(errorMessage) {
     // handle on error condition, with error message
 }
-
-var html5QrcodeScanner = new Html5QrcodeScanner(
-    "reader", { fps: 10, qrbox: 250 });
-html5QrcodeScanner.render(onScanSuccess, onScanError);
 
 
 
