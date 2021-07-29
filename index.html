@@ -9,22 +9,33 @@
 		color:white;
 	}
 	button{
-		font-size:25px;
+		font-size:35px;
+        border-radius: 10px;
 		background:blue;
+        color:white;
 	}
 #reader{
 
 	width:100%;
+    color:white;
+    font-size: 25px;
+
 
 	}
+    #ta{
+        display: none;
+    }
   
 
 </style>
-<div style="width: 500px" id="reader"></div><br><br>
-Resultado:<br><br>
+<div  id="reader"></div><br>
+
 <div id="res">
-    <a id="tx" href=""  target="_blank" >rrrrr</a>
+   Resultado:<br> <a id="ta" href=""  target="_blank" ></a><br><br>
+    <textarea id="tx"></textarea>
 </div>
+
+
 <script src="html5-qrcode.min.js"></script>
 
 
@@ -35,31 +46,125 @@ var html5QrcodeScanner = new Html5QrcodeScanner(
     "reader", { fps: 10, qrbox: 250 });
 html5QrcodeScanner.render(onScanSuccess, onScanError);
 
-function onScanSuccess(decodedText, decodedResult) {
-    // Handle on success condition with the decoded text or result.
-    alert(decodedText);
-   tx.href=decodedText;tx.innerHTML=decodedText;
-//`Scan result: ${decodedText}`, 
+function onScanSuccess(decodedText, decodedResult) { 
+     if(decodedText.indexOf("http")>-1) ta.style.display="block";
+      else  ta.style.display="none";
+     alert(decodedText);
+   ta.href=decodedText;
+   ta.innerHTML=decodedText;
+ 
+  
+   tx.value=decodedText;
 }
-/*
-var html5QrcodeScanner = new Html5QrcodeScanner(
-	"reader", { fps: 10, qrbox: 250 });
-html5QrcodeScanner.render(onScanSuccess);
-
-function onScanSuccess(decodedText, decodedResult) {
-    // Handle on success condition with the decoded text or result.
-    alert(`Scan result: ${decodedText}`, decodedResult);
-  //  tx.value=decodedText+"\n\n\n"+JSON.stringify(decodedResult);
-  tx.href=decodedText;tx.innerHTML=decodedText;
-
-}
-*/
 function onScanError(errorMessage) {
     // handle on error condition, with error message
 }
 
 
 
+
+</script>
+
+
+
+<style>
+body{
+    text-align:center;
+    font-size:35px;
+    margin:20px;
+    
+    
+    }
+
+</style>
+<div id="todo">
+
+<button onclick="set()">Set Texto</button><br><p><br>
+<img id="code" src="" alt=""  />
+<p><br><canvas id="ca"></canvas>
+
+
+</div>
+
+
+<script>
+    //http(s)://api.qrserver.com/v1/create-qr-code/?data=[URL-encoded-text]&size=[pixels]x[pixels]
+//onclick="newImg(this,'swipe()')"
+
+  function set(){
+       var url='https://api.qrserver.com/v1/create-qr-code/?data='+tx.value+'&amp;size=100x100';
+        loadDoc(url,function(r){
+        //    alert(r);
+      //  var data = btoa(r);
+      //  alert(data)
+        })
+      code.src=url;
+
+  }
+function loadDoc(url,callback) {
+  var xhttp = new XMLHttpRequest();
+  alert(url)
+  xhttp.open("GET", url, false);
+  xhttp.send();
+callback(xhttp.responseText);
+
+}     
+
+function swipe() {
+    alert("ok")
+   var largeImage = document.getElementById('tx');
+   largeImage.style.display = 'block';
+   largeImage.style.width=200+"px";
+   largeImage.style.height=200+"px";
+   var url=largeImage.getAttribute('src');
+   alert("veremos\n\n"+url);
+   window.open(url,'Image','width=largeImage.stylewidth,height=largeImage.style.height,resizable=1');
+   alert("success")
+}
+function newImg(img, callback, outputFormat){
+ //   var img = new Image();
+    img.crossOrigin = 'Anonymous';
+  //  img.onload = function(){
+  
+        var canvas = document.createElement('CANVAS'),
+        ctx = canvas.getContext('2d'), dataURL;
+        canvas.height = img.height;
+        canvas.width = img.width;
+        ctx.drawImage(img, 0, 0);
+        dataURL = canvas.toDataURL(outputFormat); alert(dataURL) ;   alert("ddd")
+        //callback(dataURL);
+        swipe()
+        canvas = null; 
+    //};
+   
+    img.src = dataURL;
+}
+
+/*
+
+function convertImgToBase64URL(url, callback, outputFormat){
+    var img = new Image();
+    img.crossOrigin = 'Anonymous';
+    img.onload = function(){
+        var canvas = document.createElement('CANVAS'),
+        ctx = canvas.getContext('2d'), dataURL;
+        canvas.height = img.height;
+        canvas.width = img.width;
+        ctx.drawImage(img, 0, 0);
+        dataURL = canvas.toDataURL(outputFormat);
+        callback(dataURL);
+        canvas = null; 
+    };
+    img.src = url;
+}
+convertImgToBase64URL('http://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png', function(base64Img){
+alert('it works');
+      $('.output').find('img').attr('src', base64Img);  
+   
+});
+
+*/
+//function convertImgToBase64URL will convert the image into data url
 
 </script>
 </html>
