@@ -19,11 +19,18 @@
 	width:100%;
     color:white;
     font-size: 25px;
-
-
+  
 	}
     #ta{
+
         display: none;
+      
+    }
+    #tx{
+        margin: 5%;
+        width: 90%;
+        font-size: 20px;
+        height: 20%;
     }
   
 
@@ -75,11 +82,15 @@ body{
     
     
     }
+    code#{
+        margin: 5%;
+        width: 100%;
+    }
 
 </style>
 <div id="todo">
 
-<button onclick="set()">Set Texto</button><br><p><br>
+<button onclick="set()">Get QR Code</button><br><p><br>
 <img id="code" src="" alt=""  />
 <p><br><canvas id="ca"></canvas>
 
@@ -103,7 +114,7 @@ body{
   }
 function loadDoc(url,callback) {
   var xhttp = new XMLHttpRequest();
-  alert(url)
+ // alert(url)
   xhttp.open("GET", url, false);
   xhttp.send();
 callback(xhttp.responseText);
